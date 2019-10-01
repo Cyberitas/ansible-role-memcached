@@ -16,7 +16,7 @@
 # Configure Memcached.
 - name: Copy Memcached configuration.
   template:
-    src: "{{ ansible_os_family }}".conf.j2
+    src: mcached-{{ ansible_os_family }}.conf.j2
     dest: "{{ mcached_config_file }}"
     owner: root
     group: root
