@@ -1,0 +1,17 @@
+# Add manged by Ansible notice
+{{ hash_no_edit_notice }}
+
+# Port connection
+PORT="{{ mcached_port }}"
+
+# user to run as.
+USER="{{ mcached_user }}"
+
+# Simultaneous incoming connections limit.
+MAXCONN="{{ mcached_connections }}"
+
+# Memory cap.
+CACHESIZE="{{ mcached_memory_limit }}"
+
+# -l IP address to listen on.
+OPTIONS="-l {{ mcached_ip }} {{ mcached_log_verb_level }} >> {{ mcached_log_file }} 2>&1"

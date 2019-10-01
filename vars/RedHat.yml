@@ -1,0 +1,5 @@
+# roles/memcached/vars/main.yml
+---
+
+__mcached_user: memcached
+mcached_config_file: /etc/sysconfig/memcached

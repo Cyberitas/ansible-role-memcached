@@ -1,0 +1,27 @@
+# roles/memcached/tasks/main.yml
+---
+
+- name: OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Define mcached_user.
+  set_fact:
+    mcached_user: "{{ __mcached_user }}"
+  when: mcached_user is not defined
+
+- name: Install Memcached.
+  package: name=memcached state=present
+  register: mcached_install
+
+# Configure Memcached.
+- name: Copy Memcached configuration.
+  template:
+    src: {{ ansible_os_family }}.conf.j2
+    dest: "{{ mcached_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart memcached
+
+- name: Ensure Memcached is started and set to run on startup.
+  service: name=memcached state=started enabled=yes
