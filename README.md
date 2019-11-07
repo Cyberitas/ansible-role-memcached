@@ -30,7 +30,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: jhd3.ansible_role_memcached }
+         - { role: cyberitas.ansible_role_memcached }
 
 License
 -------
